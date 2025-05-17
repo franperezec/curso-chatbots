@@ -106,9 +106,16 @@ class RAGChatbot:
         return prompt
 
     def generate_answer(self, question: str) -> str:
-        """
-        Retrieves relevant context using the retriever, constructs the prompt,
-        and generates an answer using the LLM.
+        """Generate an answer from the LLM and return it as a plain string.
+
+        The method retrieves the relevant context with the configured retriever,
+        formats the prompt, invokes the LLM and returns only the textual
+        response.
+
+        Returns
+        -------
+        str
+            The generated answer from the LLM.
         """
         logger.info(f"Procesando pregunta: {question}")
         try:
@@ -149,7 +156,7 @@ def main():
     for i, question in enumerate(questions, 1):
         print(f"\nQ{i}: {question}")
         answer = chatbot.generate_answer(question)
-        print(f"A{i}: {answer.content}")
+        print(f"A{i}: {answer}")
 
 
 if __name__ == "__main__":
